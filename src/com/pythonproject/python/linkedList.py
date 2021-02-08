@@ -63,7 +63,7 @@ class singlyLinkedList:
             print("Empty Linked list, cannot delete")
         elif pos == 1:
             self.delete_first()
-        elif pos == 1:
+        elif pos == 0:
             print("0 position is invalid")
         else:
             for i in range(1,pos-1):
