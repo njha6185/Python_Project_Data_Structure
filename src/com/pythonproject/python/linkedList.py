@@ -1,3 +1,4 @@
+from _overlapped import NULL
 class node:
     def __init__(self,data):
         self.data =data
@@ -87,6 +88,30 @@ class singlyLinkedList:
                 temp=temp.next
             print("All element Deleted")
             
+    def reverseList(self):
+        oldHead=self.head
+        self.head=None
+        while(oldHead):
+            temp=oldHead
+            oldHead=oldHead.next
+            temp.next=self.head
+            self.head=temp
+            
+    def reverseDisplayList(self, tempNode):
+        if(tempNode is None):
+            return
+        self.reverseDisplayList(tempNode.next)
+        print(tempNode.data)
+        
+    def midElementOFlist(self):
+        slow=self.head
+        fast=self.head
+        while(fast and fast.next):
+            slow=slow.next
+            fast=fast.next.next
+        print(slow.data)
+        
+            
 class stack: #LIFO : LAST IN FIRST OUT
     def __init__(self):
         self.stack=singlyLinkedList()
@@ -144,25 +169,25 @@ class queue: #FIFO : First IN FIRST OUT
              
 if __name__ == '__main__':
     
-    Objqueue = queue()
-    print(Objqueue.isEmpty())
-    
-    Objqueue.push(10)
-    Objqueue.push(12)
-    Objqueue.push(13)
-    Objqueue.displayqueue()
-    print("Peek")
-    print(Objqueue.peek())
-    Objqueue.displayqueue()
-    Objqueue.push(15)
-    Objqueue.displayqueue()
-    print("Pop")
-    Objqueue.pop()
-    Objqueue.displayqueue()
-    Objqueue.push(19)
-    Objqueue.push(20)
-    print(Objqueue.isEmpty())
-    Objqueue.displayqueue()
+#     Objqueue = queue()
+#     print(Objqueue.isEmpty())
+#     
+#     Objqueue.push(10)
+#     Objqueue.push(12)
+#     Objqueue.push(13)
+#     Objqueue.displayqueue()
+#     print("Peek")
+#     print(Objqueue.peek())
+#     Objqueue.displayqueue()
+#     Objqueue.push(15)
+#     Objqueue.displayqueue()
+#     print("Pop")
+#     Objqueue.pop()
+#     Objqueue.displayqueue()
+#     Objqueue.push(19)
+#     Objqueue.push(20)
+#     print(Objqueue.isEmpty())
+#     Objqueue.displayqueue()
     
 #     ObjStack = stack()
 #     print(ObjStack.isEmpty())
@@ -184,27 +209,34 @@ if __name__ == '__main__':
 #     print(ObjStack.isEmpty())
 #     ObjStack.displayStack()
     
-#     lList=singlyLinkedList()
-#     print("Add last 2 times for 1,2")
-#     lList.add_last(1)
-#     lList.add_last(2)
+    lList=singlyLinkedList()
+    print("Add last 2 times for 1,2")
+    lList.add_last(1)
+    lList.add_last(2)
+    lList.display()
+    print("Add first 2 times for 4,3")
+    lList.add_first(4)
+    lList.add_first(3)
+    lList.display()
+    print("Add pos 4 times for 5,6,7,8 at 1,6,3,0")
+    lList.add_at_position(5,1)
+    lList.add_at_position(6,6)
+    lList.add_at_position(7,3)
+    lList.add_at_position(8,0) 
+    lList.display()
+    print("delete first 2 ")#5,3,7,4,1,2,6
+    lList.delete_first()
+    lList.display()
+#     print("After delete all ")#None
+#     lList.delete_all()
 #     lList.display()
-#     print("Add first 2 times for 4,3")
-#     lList.add_first(4)
-#     lList.add_first(3)
+    print("delete at 3 ")#5,3,4,1,2,6
+    lList.delete_at_pos(0)
+    print("Final list:")
+    lList.display()
+#     lList.reverseList()
+    print("Final list mid:")
+    lList.midElementOFlist()
+    
 #     lList.display()
-#     print("Add pos 4 times for 5,6,7,8 at 1,6,3,0")
-#     lList.add_at_position(5,1)
-#     lList.add_at_position(6,6)
-#     lList.add_at_position(7,3)
-#     lList.add_at_position(8,0) 
-#     lList.display()
-#     print("delete first 2 ")#5,3,7,4,1,2,6
-#     lList.delete_first()
-#     lList.display()
-# #     print("After delete all ")#None
-# #     lList.delete_all()
-# #     lList.display()
-#     print("delete at 3 ")#5,3,4,1,2,6
-#     lList.delete_at_pos(0)
-#     lList.display()
+#     lList.reverseDisplayList(lList.head)
