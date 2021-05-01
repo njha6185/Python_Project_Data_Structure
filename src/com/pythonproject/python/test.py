@@ -1,2 +1,2 @@
-for i in range(1,2):
-    print(i)
+mat=[[0]*10]*10
+print(mat)
